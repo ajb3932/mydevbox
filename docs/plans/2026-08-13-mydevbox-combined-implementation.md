@@ -118,17 +118,22 @@ code --no-sandbox /home/rdpuser/workspace &
 
 (
     i=0
-    while [ "$i" -lt 20 ]; do
-        count=$(wmctrl -l 2>/dev/null | wc -l)
-        [ "$count" -ge 2 ] && break
-        sleep 0.5
+    while [ "$i" -lt 30 ]; do
+        for id in $(wmctrl -l 2>/dev/null | awk '{print $1}'); do
+            wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz 2>/dev/null
+        done
+        sleep 1
         i=$((i + 1))
-    done
-    for id in $(wmctrl -l | awk '{print $1}'); do
-        wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz
     done
 ) &
 ```
+
+(Revised during execution: a single count-then-maximize pass left Zen's window
+unmaximized in testing, because its real browser window appeared after the
+first-run "Welcome" dialog had already pushed the window count past the
+threshold and triggered the one-shot maximize sweep. A repeated sweep over
+~30s catches windows that appear late or get replaced, at the cost of
+harmlessly re-issuing maximize to already-maximized windows each second.)
 
 - [ ] **Step 4: Syntax-check the two shell scripts**
 

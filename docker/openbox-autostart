@@ -6,13 +6,11 @@ code --no-sandbox /home/rdpuser/workspace &
 
 (
     i=0
-    while [ "$i" -lt 40 ]; do
-        count=$(wmctrl -l 2>/dev/null | wc -l)
-        [ "$count" -ge 2 ] && break
-        sleep 0.5
+    while [ "$i" -lt 30 ]; do
+        for id in $(wmctrl -l 2>/dev/null | awk '{print $1}'); do
+            wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz 2>/dev/null
+        done
+        sleep 1
         i=$((i + 1))
-    done
-    for id in $(wmctrl -l | awk '{print $1}'); do
-        wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz
     done
 ) &
