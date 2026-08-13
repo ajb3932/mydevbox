@@ -1,0 +1,18 @@
+#!/bin/sh
+tint2 &
+
+zen &
+code --no-sandbox /home/rdpuser/workspace &
+
+(
+    i=0
+    while [ "$i" -lt 40 ]; do
+        count=$(wmctrl -l 2>/dev/null | wc -l)
+        [ "$count" -ge 2 ] && break
+        sleep 0.5
+        i=$((i + 1))
+    done
+    for id in $(wmctrl -l | awk '{print $1}'); do
+        wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz
+    done
+) &
