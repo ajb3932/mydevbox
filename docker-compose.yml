@@ -1,0 +1,11 @@
+services:
+  mydevbox:
+    image: ajb3932/mydevbox:latest
+    ports:
+      - "3392:3389"
+    environment:
+      - RDP_PASSWORD=changeme
+      # - ADDITIONAL_PACKAGES=openssh-client,net-tools
+    volumes:
+      - /mydevbox/home:/home/rdpuser
+    restart: unless-stopped
