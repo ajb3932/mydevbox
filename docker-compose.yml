@@ -1,5 +1,7 @@
 services:
   mydevbox:
+    hostname: mydevbox
+    container_name: mydevbox
     image: ajb3932/mydevbox:latest
     ports:
       - "3392:3389"
