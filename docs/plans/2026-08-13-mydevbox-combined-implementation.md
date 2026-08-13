@@ -336,9 +336,9 @@ Expected: build completes with `Successfully tagged mydevbox:test` (or BuildKit'
 
 - [ ] **Step 4: Verify all required binaries are present**
 
-Run:
+Run (must override `ENTRYPOINT` — otherwise the container ignores this command entirely and launches the real xrdp startup sequence instead, which hangs waiting on daemons rather than running the check):
 ```bash
-docker run --rm mydevbox:test bash -c "which code zen tint2 wmctrl openbox dbus-daemon && ls /usr/sbin/xrdp /usr/sbin/xrdp-sesman"
+docker run --rm --entrypoint bash mydevbox:test -c "which code zen tint2 wmctrl openbox dbus-daemon && ls /usr/sbin/xrdp /usr/sbin/xrdp-sesman"
 ```
 Expected: a path printed for each of `code`, `zen`, `tint2`, `wmctrl`, `openbox`, `dbus-daemon`, and both `/usr/sbin/xrdp` and `/usr/sbin/xrdp-sesman` listed — no "not found" errors.
 
