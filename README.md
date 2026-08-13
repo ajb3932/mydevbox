@@ -75,8 +75,17 @@ require the packages to install again.
 
 ## Notes
 
+- `docker-compose.yml` sets `shm_size: '1gb'`. VS Code (and Chromium
+  apps in general) are known to crash their renderer process
+  (`renderer process gone (reason: crashed, code: 133)`) under
+  Docker's 64MB default `/dev/shm` — this got hit in testing. Don't
+  remove this setting without replacing it some other way (e.g.
+  launching VS Code with `--disable-dev-shm-usage`, which trades this
+  for slower `/tmp`-backed shared memory).
 - No audio redirection.
-- No GPU acceleration.
+- No GPU acceleration — expect `libEGL`/DRI2 warnings in the logs;
+  VS Code and Zen both fall back to software rendering, which is part
+  of why shared-memory pressure matters here.
 - The RDP username (`rdpuser`) is fixed and not configurable — only
   the password is.
 - The image is intentionally minimal and rdpuser has no sudo access.

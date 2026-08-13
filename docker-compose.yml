@@ -8,4 +8,5 @@ services:
       # - ADDITIONAL_PACKAGES=openssh-client,net-tools
     volumes:
       - /mydevbox/home:/home/rdpuser
+    shm_size: '1gb'
     restart: unless-stopped
