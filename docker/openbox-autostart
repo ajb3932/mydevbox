@@ -4,13 +4,29 @@ tint2 &
 zen &
 code --no-sandbox /home/rdpuser/workspace &
 
+remaximize() {
+    for id in $(wmctrl -l 2>/dev/null | awk '{print $1}'); do
+        wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz 2>/dev/null
+    done
+}
+
 (
+    # initial launch: apps take a few seconds to open their first window
     i=0
     while [ "$i" -lt 30 ]; do
-        for id in $(wmctrl -l 2>/dev/null | awk '{print $1}'); do
-            wmctrl -i -r "$id" -b add,maximized_vert,maximized_horz 2>/dev/null
-        done
+        remaximize
         sleep 1
         i=$((i + 1))
+    done
+) &
+
+(
+    # ongoing: RDP clients resize the session after connect (and whenever
+    # the user resizes their RDP window), which changes the available work
+    # area. Re-fit windows each time that happens, for the life of the
+    # session, instead of only once at startup.
+    xprop -root -spy _NET_WORKAREA 2>/dev/null | while read -r _; do
+        sleep 1
+        remaximize
     done
 ) &

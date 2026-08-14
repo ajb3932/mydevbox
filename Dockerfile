@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openbox \
         tint2 \
         wmctrl \
+        x11-utils \
         dbus \
         dbus-x11 \
         ca-certificates \
