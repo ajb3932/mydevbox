@@ -27,7 +27,7 @@ panel_layer = top
 panel_monitor = all
 panel_background_id = 1
 autohide = 0
-strut_policy = follow_window
+strut_policy = follow_size
 
 #-------------------------------------
 # Taskbar
