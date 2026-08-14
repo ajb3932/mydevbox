@@ -57,6 +57,7 @@ COPY docker/startwm.sh /etc/xrdp/startwm.sh
 COPY docker/openbox-autostart /etc/xdg/openbox/autostart
 COPY docker/tint2rc /etc/xdg/tint2/tint2rc
 COPY docker/zen.desktop /usr/share/applications/zen.desktop
+COPY docker/menu.xml /etc/xdg/openbox/menu.xml
 RUN chmod +x /etc/xrdp/startwm.sh /etc/xdg/openbox/autostart
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
