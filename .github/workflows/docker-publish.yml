@@ -25,6 +25,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    environment: docker
     permissions:
       contents: read
       # id-token: write is used to complete the identity challenge
