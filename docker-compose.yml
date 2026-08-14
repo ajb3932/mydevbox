@@ -7,7 +7,7 @@ services:
       - "3392:3389"
     environment:
       - RDP_PASSWORD=changeme
-      # - ADDITIONAL_PACKAGES=openssh-client,net-tools
+      - ADDITIONAL_PACKAGES=openssh-client
     volumes:
       - /mydevbox/home:/home/rdpuser
     shm_size: '1gb'
