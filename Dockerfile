@@ -47,7 +47,8 @@ RUN curl -fsSL -o /tmp/zen.tar.xz \
     && mkdir -p /opt/zen \
     && tar -xJf /tmp/zen.tar.xz -C /opt/zen --strip-components=1 \
     && rm /tmp/zen.tar.xz \
-    && ln -s /opt/zen/zen /usr/local/bin/zen
+    && ln -s /opt/zen/zen /usr/local/bin/zen \
+    && update-alternatives --install /usr/bin/x-www-browser x-www-browser /opt/zen/zen 100
 
 ENV LD_LIBRARY_PATH=/opt/zen
 RUN echo "LD_LIBRARY_PATH=/opt/zen" >> /etc/environment
@@ -55,6 +56,7 @@ RUN echo "LD_LIBRARY_PATH=/opt/zen" >> /etc/environment
 COPY docker/startwm.sh /etc/xrdp/startwm.sh
 COPY docker/openbox-autostart /etc/xdg/openbox/autostart
 COPY docker/tint2rc /etc/xdg/tint2/tint2rc
+COPY docker/zen.desktop /usr/share/applications/zen.desktop
 RUN chmod +x /etc/xrdp/startwm.sh /etc/xdg/openbox/autostart
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
