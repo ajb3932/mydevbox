@@ -16,7 +16,7 @@
     <action name="Execute"><execute>flameshot gui</execute></action>
   </item>
   <item label="Terminal">
-    <action name="Execute"><execute>foot</execute></action>
+    <action name="Execute"><execute>alacritty</execute></action>
   </item>
   <separator />
   <item label="tint2 settings">

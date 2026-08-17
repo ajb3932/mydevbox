@@ -31,12 +31,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libdbus-1-3 \
         libxcb-shm0 \
         ffmpeg \
-        #Optional Packages 
+        #Optional Packages
         flameshot \
         gh \
         7zip \
-        foot \
-    && rm -rf /var/lib/apt/lists/*
+        alacritty \
+    && rm -rf /var/lib/apt/lists/* \
+    && ln -s /usr/bin/7zz /usr/local/bin/7z
 
 RUN useradd -m -s /bin/bash rdpuser
 
