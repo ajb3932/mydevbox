@@ -34,7 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         #Optional Packages 
         flameshot \
         gh \
-        7z \
+        7zip \
         foot \
     && rm -rf /var/lib/apt/lists/*
 
