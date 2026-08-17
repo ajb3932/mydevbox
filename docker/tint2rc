@@ -189,19 +189,6 @@ systray_monitor = 1
 systray_name_filter = 
 
 #-------------------------------------
-# Launcher
-launcher_padding = 0 0 2
-launcher_background_id = 0
-launcher_icon_background_id = 0
-launcher_icon_size = 22
-launcher_icon_asb = 100 0 0
-launcher_icon_theme_override = 0
-startup_notifications = 1
-launcher_tooltip = 1
-launcher_item_app = /usr/share/applications/code.desktop
-launcher_item_app = ~/.local/share/applications/zen.desktop
-
-#-------------------------------------
 # Clock
 time1_format = %H:%M
 time2_format = %A %d %B
