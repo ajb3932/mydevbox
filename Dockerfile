@@ -1,6 +1,7 @@
 FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         xrdp \
@@ -16,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         gnupg \
         git \
         xz-utils \
+        tzdata \
         fonts-liberation2 \
         libgtk-3-0 \
         libx11-xcb1 \

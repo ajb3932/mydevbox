@@ -1,6 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
+TZ="${TZ:-UTC}"
+if [ -f "/usr/share/zoneinfo/${TZ}" ]; then
+    ln -sf "/usr/share/zoneinfo/${TZ}" /etc/localtime
+    echo "${TZ}" > /etc/timezone
+else
+    echo "Unknown TZ '${TZ}'; falling back to UTC" >&2
+    TZ="UTC"
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+    echo "UTC" > /etc/timezone
+fi
+
 if [ -z "${RDP_PASSWORD:-}" ]; then
     RDP_PASSWORD="$(tr -dc 'A-Za-z0-9' </dev/urandom | head -c 16 || true)"
     [ "${#RDP_PASSWORD}" -eq 16 ] || { echo "failed to generate password" >&2; exit 1; }
