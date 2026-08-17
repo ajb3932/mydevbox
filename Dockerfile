@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxcb-shm0 \
         ffmpeg \
         flameshot \
+        gh \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash rdpuser
