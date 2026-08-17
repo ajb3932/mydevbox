@@ -31,8 +31,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libdbus-1-3 \
         libxcb-shm0 \
         ffmpeg \
+        #Optional Packages 
         flameshot \
         gh \
+        7z \
+        foot \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash rdpuser
