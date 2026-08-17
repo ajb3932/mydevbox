@@ -3,6 +3,7 @@ tint2 &
 
 zen &
 code --no-sandbox /home/rdpuser/workspace &
+flameshot &
 
 remaximize() {
     for id in $(wmctrl -l 2>/dev/null | awk '{print $1}'); do

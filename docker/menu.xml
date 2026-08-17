@@ -6,21 +6,22 @@
                 file:///usr/share/openbox/menu.xsd">
 
 <menu id="root-menu" label="Openbox 3">
-  <!-- This requires the presence of the 'obamenu' package to work -->
-  <menu id="/Debian" />
-  <separator />
-  <menu id="applications-menu" label="Applications" execute="/usr/bin/obamenu"/>
-  <separator />
-  <item label="ObConf">
-    <action name="Execute"><execute>obconf</execute></action>
+  <item label="Zen Browser">
+    <action name="Execute"><execute>zen</execute></action>
   </item>
-  <item label="Reconfigure">
-    <action name="Reconfigure" />
+  <item label="VS Code">
+    <action name="Execute"><execute>code --no-sandbox /home/rdpuser/workspace</execute></action>
+  </item>
+  <item label="Flameshot">
+    <action name="Execute"><execute>flameshot gui</execute></action>
+  </item>
+  <separator />
+  <item label="tint2 settings">
+    <action name="Execute"><execute>tint2conf</execute></action>
   </item>
   <item label="Restart">
     <action name="Restart" />
   </item>
-  <separator />
   <item label="Exit">
     <action name="Exit" />
   </item>

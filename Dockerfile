@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libdbus-1-3 \
         libxcb-shm0 \
         ffmpeg \
+        flameshot \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash rdpuser
@@ -58,6 +59,7 @@ COPY docker/openbox-autostart /etc/xdg/openbox/autostart
 COPY docker/tint2rc /etc/xdg/tint2/tint2rc
 COPY docker/zen.desktop /usr/share/applications/zen.desktop
 COPY docker/menu.xml /etc/xdg/openbox/menu.xml
+COPY docker/rc.xml /etc/xdg/openbox/rc.xml
 RUN chmod +x /etc/xrdp/startwm.sh /etc/xdg/openbox/autostart
 
 COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
